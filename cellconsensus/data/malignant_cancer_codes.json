@@ -1,0 +1,1249 @@
+{
+  "generated_at": "2026-04-23 10:50:53",
+  "n_codes": 120,
+  "total_markers": 10394,
+  "entries": {
+    "NCIT:C3099": {
+      "name": "Hepatocellular Carcinoma",
+      "key": "hepatocellular_carcinoma",
+      "depth": 5,
+      "n_markers": 1159,
+      "n_sources": 79,
+      "covered_descendants": []
+    },
+    "NCIT:C2926": {
+      "name": "Lung Non-Small Cell Carcinoma",
+      "key": "lung_non_small_cell_carcinoma",
+      "depth": 5,
+      "n_markers": 886,
+      "n_sources": 71,
+      "covered_descendants": [
+        "NCIT:C3512"
+      ]
+    },
+    "NCIT:C3059": {
+      "name": "Glioma",
+      "key": "glioma",
+      "depth": 4,
+      "n_markers": 820,
+      "n_sources": 16,
+      "covered_descendants": [
+        "NCIT:C129295",
+        "NCIT:C129325",
+        "NCIT:C162993",
+        "NCIT:C3017",
+        "NCIT:C3058",
+        "NCIT:C3288",
+        "NCIT:C4951"
+      ]
+    },
+    "NCIT:C4872": {
+      "name": "Breast Carcinoma",
+      "key": "breast_carcinoma",
+      "depth": 4,
+      "n_markers": 466,
+      "n_sources": 70,
+      "covered_descendants": [
+        "NCIT:C153238",
+        "NCIT:C2924",
+        "NCIT:C4194",
+        "NCIT:C71732"
+      ]
+    },
+    "NCIT:C3242": {
+      "name": "Multiple Myeloma",
+      "key": "multiple_myeloma",
+      "depth": 4,
+      "n_markers": 444,
+      "n_sources": 65,
+      "covered_descendants": []
+    },
+    "NCIT:C3171": {
+      "name": "Acute Myeloid Leukemia",
+      "key": "acute_myeloid_leukemia",
+      "depth": 5,
+      "n_markers": 400,
+      "n_sources": 43,
+      "covered_descendants": [
+        "NCIT:C8923"
+      ]
+    },
+    "NCIT:C8294": {
+      "name": "Pancreatic Adenocarcinoma",
+      "key": "pancreatic_adenocarcinoma",
+      "depth": 6,
+      "n_markers": 331,
+      "n_sources": 60,
+      "covered_descendants": [
+        "NCIT:C9120"
+      ]
+    },
+    "NCIT:C3288": {
+      "name": "Oligodendroglioma",
+      "key": "oligodendroglioma",
+      "depth": 6,
+      "n_markers": 325,
+      "n_sources": 3,
+      "covered_descendants": []
+    },
+    "NCIT:C3058": {
+      "name": "Glioblastoma",
+      "key": "glioblastoma",
+      "depth": 4,
+      "n_markers": 299,
+      "n_sources": 79,
+      "covered_descendants": [
+        "NCIT:C129295"
+      ]
+    },
+    "NCIT:C9335": {
+      "name": "Malignant Breast Neoplasm",
+      "key": "malignant_breast_neoplasm",
+      "depth": 3,
+      "n_markers": 263,
+      "n_sources": 10,
+      "covered_descendants": [
+        "NCIT:C153238",
+        "NCIT:C2924",
+        "NCIT:C4194",
+        "NCIT:C4872",
+        "NCIT:C71732"
+      ]
+    },
+    "NCIT:C4978": {
+      "name": "Malignant Colorectal Neoplasm",
+      "key": "malignant_colorectal_neoplasm",
+      "depth": 6,
+      "n_markers": 261,
+      "n_sources": 67,
+      "covered_descendants": [
+        "NCIT:C2955",
+        "NCIT:C4910"
+      ]
+    },
+    "NCIT:C9120": {
+      "name": "Pancreatic Ductal Adenocarcinoma",
+      "key": "pancreatic_ductal_adenocarcinoma",
+      "depth": 7,
+      "n_markers": 249,
+      "n_sources": 5,
+      "covered_descendants": []
+    },
+    "NCIT:C4908": {
+      "name": "Ovarian Carcinoma",
+      "key": "ovarian_carcinoma",
+      "depth": 5,
+      "n_markers": 247,
+      "n_sources": 9,
+      "covered_descendants": [
+        "NCIT:C7550"
+      ]
+    },
+    "NCIT:C4911": {
+      "name": "Gastric Carcinoma",
+      "key": "gastric_carcinoma",
+      "depth": 5,
+      "n_markers": 206,
+      "n_sources": 126,
+      "covered_descendants": [
+        "NCIT:C4004"
+      ]
+    },
+    "NCIT:C2955": {
+      "name": "Colorectal Carcinoma",
+      "key": "colorectal_carcinoma",
+      "depth": 5,
+      "n_markers": 199,
+      "n_sources": 6,
+      "covered_descendants": [
+        "NCIT:C4910"
+      ]
+    },
+    "NCIT:C4033": {
+      "name": "Clear Cell Renal Cell Carcinoma",
+      "key": "clear_cell_renal_cell_carcinoma",
+      "depth": 6,
+      "n_markers": 192,
+      "n_sources": 40,
+      "covered_descendants": []
+    },
+    "NCIT:C3224": {
+      "name": "Melanoma",
+      "key": "melanoma",
+      "depth": 3,
+      "n_markers": 192,
+      "n_sources": 32,
+      "covered_descendants": [
+        "NCIT:C3510",
+        "NCIT:C7712"
+      ]
+    },
+    "NCIT:C4917": {
+      "name": "Lung Small Cell Carcinoma",
+      "key": "lung_small_cell_carcinoma",
+      "depth": 6,
+      "n_markers": 178,
+      "n_sources": 49,
+      "covered_descendants": []
+    },
+    "NCIT:C3163": {
+      "name": "Chronic Lymphocytic Leukemia",
+      "key": "chronic_lymphocytic_leukemia",
+      "depth": 5,
+      "n_markers": 165,
+      "n_sources": 86,
+      "covered_descendants": []
+    },
+    "NCIT:C4436": {
+      "name": "Cholangiocarcinoma",
+      "key": "cholangiocarcinoma",
+      "depth": 7,
+      "n_markers": 156,
+      "n_sources": 38,
+      "covered_descendants": [
+        "NCIT:C35417",
+        "NCIT:C41617"
+      ]
+    },
+    "NCIT:C3871": {
+      "name": "Nasopharyngeal Carcinoma",
+      "key": "nasopharyngeal_carcinoma",
+      "depth": 7,
+      "n_markers": 139,
+      "n_sources": 28,
+      "covered_descendants": []
+    },
+    "NCIT:C4024": {
+      "name": "Esophageal Squamous Cell Carcinoma",
+      "key": "esophageal_squamous_cell_carcinoma",
+      "depth": 5,
+      "n_markers": 134,
+      "n_sources": 58,
+      "covered_descendants": []
+    },
+    "NCIT:C2919": {
+      "name": "Prostate Adenocarcinoma",
+      "key": "prostate_adenocarcinoma",
+      "depth": 5,
+      "n_markers": 128,
+      "n_sources": 12,
+      "covered_descendants": []
+    },
+    "NCIT:C9385": {
+      "name": "Renal Cell Carcinoma",
+      "key": "renal_cell_carcinoma",
+      "depth": 6,
+      "n_markers": 118,
+      "n_sources": 78,
+      "covered_descendants": [
+        "NCIT:C4033",
+        "NCIT:C4146",
+        "NCIT:C7825"
+      ]
+    },
+    "NCIT:C34447": {
+      "name": "Head and Neck Squamous Cell Carcinoma",
+      "key": "head_and_neck_squamous_cell_carcinoma",
+      "depth": 5,
+      "n_markers": 104,
+      "n_sources": 32,
+      "covered_descendants": [
+        "NCIT:C171023",
+        "NCIT:C207803",
+        "NCIT:C4044",
+        "NCIT:C4648",
+        "NCIT:C4833"
+      ]
+    },
+    "NCIT:C162993": {
+      "name": "Malignant Brain Glioma",
+      "key": "malignant_brain_glioma",
+      "depth": 6,
+      "n_markers": 101,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C4951": {
+      "name": "Cerebral Astrocytoma",
+      "key": "cerebral_astrocytoma",
+      "depth": 7,
+      "n_markers": 99,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C7712": {
+      "name": "Uveal Melanoma",
+      "key": "uveal_melanoma",
+      "depth": 4,
+      "n_markers": 89,
+      "n_sources": 6,
+      "covered_descendants": []
+    },
+    "NCIT:C3512": {
+      "name": "Lung Adenocarcinoma",
+      "key": "lung_adenocarcinoma",
+      "depth": 6,
+      "n_markers": 82,
+      "n_sources": 3,
+      "covered_descendants": []
+    },
+    "NCIT:C4863": {
+      "name": "Prostate Carcinoma",
+      "key": "prostate_carcinoma",
+      "depth": 6,
+      "n_markers": 79,
+      "n_sources": 2,
+      "covered_descendants": [
+        "NCIT:C2919"
+      ]
+    },
+    "NCIT:C8851": {
+      "name": "Diffuse Large B-Cell Lymphoma",
+      "key": "diffuse_large_b_cell_lymphoma",
+      "depth": 6,
+      "n_markers": 78,
+      "n_sources": 3,
+      "covered_descendants": []
+    },
+    "NCIT:C7510": {
+      "name": "Malignant Thyroid Gland Neoplasm",
+      "key": "malignant_thyroid_gland_neoplasm",
+      "depth": 5,
+      "n_markers": 75,
+      "n_sources": 33,
+      "covered_descendants": [
+        "NCIT:C4035",
+        "NCIT:C4815"
+      ]
+    },
+    "NCIT:C27745": {
+      "name": "Non-Small Cell Adenocarcinoma",
+      "key": "non_small_cell_adenocarcinoma",
+      "depth": 5,
+      "n_markers": 75,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C3512"
+      ]
+    },
+    "NCIT:C3167": {
+      "name": "Acute Lymphoblastic Leukemia",
+      "key": "acute_lymphoblastic_leukemia",
+      "depth": 4,
+      "n_markers": 72,
+      "n_sources": 4,
+      "covered_descendants": [
+        "NCIT:C8644"
+      ]
+    },
+    "NCIT:C9118": {
+      "name": "Sarcoma",
+      "key": "sarcoma",
+      "depth": 3,
+      "n_markers": 67,
+      "n_sources": 36,
+      "covered_descendants": [
+        "NCIT:C3400",
+        "NCIT:C3798",
+        "NCIT:C4247",
+        "NCIT:C9145",
+        "NCIT:C9306"
+      ]
+    },
+    "NCIT:C3510": {
+      "name": "Cutaneous Melanoma",
+      "key": "cutaneous_melanoma",
+      "depth": 4,
+      "n_markers": 67,
+      "n_sources": 4,
+      "covered_descendants": []
+    },
+    "NCIT:C3222": {
+      "name": "Medulloblastoma",
+      "key": "medulloblastoma",
+      "depth": 4,
+      "n_markers": 64,
+      "n_sources": 3,
+      "covered_descendants": []
+    },
+    "NCIT:C4878": {
+      "name": "Lung Carcinoma",
+      "key": "lung_carcinoma",
+      "depth": 4,
+      "n_markers": 62,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C2926",
+        "NCIT:C3493",
+        "NCIT:C3512",
+        "NCIT:C4917"
+      ]
+    },
+    "NCIT:C156767": {
+      "name": "Basal Cell Carcinoma",
+      "key": "basal_cell_carcinoma",
+      "depth": 4,
+      "n_markers": 60,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C9231": {
+      "name": "Merkel Cell Carcinoma",
+      "key": "merkel_cell_carcinoma",
+      "depth": 6,
+      "n_markers": 57,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C3400": {
+      "name": "Synovial Sarcoma",
+      "key": "synovial_sarcoma",
+      "depth": 5,
+      "n_markers": 56,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C3246": {
+      "name": "Mycosis Fungoides",
+      "key": "mycosis_fungoides",
+      "depth": 6,
+      "n_markers": 52,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C4912": {
+      "name": "Bladder Carcinoma",
+      "key": "bladder_carcinoma",
+      "depth": 7,
+      "n_markers": 41,
+      "n_sources": 3,
+      "covered_descendants": []
+    },
+    "NCIT:C129295": {
+      "name": "Glioblastoma, Not Otherwise Specified",
+      "key": "glioblastoma_not_otherwise_specified",
+      "depth": 5,
+      "n_markers": 40,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C71732": {
+      "name": "Triple-Negative Breast Carcinoma",
+      "key": "triple_negative_breast_carcinoma",
+      "depth": 7,
+      "n_markers": 39,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C3270": {
+      "name": "Neuroblastoma",
+      "key": "neuroblastoma",
+      "depth": 5,
+      "n_markers": 37,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C3267": {
+      "name": "Wilms Tumor",
+      "key": "wilms_tumor",
+      "depth": 3,
+      "n_markers": 36,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C4833": {
+      "name": "Oral Cavity Squamous Cell Carcinoma",
+      "key": "oral_cavity_squamous_cell_carcinoma",
+      "depth": 6,
+      "n_markers": 35,
+      "n_sources": 2,
+      "covered_descendants": [
+        "NCIT:C4648"
+      ]
+    },
+    "NCIT:C4815": {
+      "name": "Thyroid Gland Carcinoma",
+      "key": "thyroid_gland_carcinoma",
+      "depth": 6,
+      "n_markers": 35,
+      "n_sources": 2,
+      "covered_descendants": [
+        "NCIT:C4035"
+      ]
+    },
+    "NCIT:C3493": {
+      "name": "Lung Squamous Cell Carcinoma",
+      "key": "lung_squamous_cell_carcinoma",
+      "depth": 5,
+      "n_markers": 34,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C3728": {
+      "name": "Hepatoblastoma",
+      "key": "hepatoblastoma",
+      "depth": 3,
+      "n_markers": 32,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C3868": {
+      "name": "Gastrointestinal Stromal Tumor",
+      "key": "gastrointestinal_stromal_tumor",
+      "depth": 4,
+      "n_markers": 31,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C3262": {
+      "name": "Neoplasm",
+      "key": "cancer",
+      "depth": 0,
+      "n_markers": 31,
+      "n_sources": 2,
+      "covered_descendants": [
+        "NCIT:C120456",
+        "NCIT:C129295",
+        "NCIT:C129325",
+        "NCIT:C153238",
+        "NCIT:C156767",
+        "NCIT:C156781",
+        "NCIT:C162993",
+        "NCIT:C170814",
+        "NCIT:C171023",
+        "NCIT:C188218",
+        "NCIT:C207229",
+        "NCIT:C207803",
+        "NCIT:C27294",
+        "NCIT:C27745",
+        "NCIT:C2919",
+        "NCIT:C2920",
+        "NCIT:C2924",
+        "NCIT:C2926",
+        "NCIT:C2955",
+        "NCIT:C3017",
+        "NCIT:C3049",
+        "NCIT:C3058",
+        "NCIT:C3059",
+        "NCIT:C3099",
+        "NCIT:C3161",
+        "NCIT:C3163",
+        "NCIT:C3167",
+        "NCIT:C3171",
+        "NCIT:C3174",
+        "NCIT:C3184",
+        "NCIT:C3200",
+        "NCIT:C3208",
+        "NCIT:C3209",
+        "NCIT:C3222",
+        "NCIT:C3224",
+        "NCIT:C3242",
+        "NCIT:C3246",
+        "NCIT:C3267",
+        "NCIT:C3269",
+        "NCIT:C3270",
+        "NCIT:C3288",
+        "NCIT:C3326",
+        "NCIT:C3400",
+        "NCIT:C3434",
+        "NCIT:C34447",
+        "NCIT:C3457",
+        "NCIT:C3493",
+        "NCIT:C3510",
+        "NCIT:C3512",
+        "NCIT:C3513",
+        "NCIT:C3529",
+        "NCIT:C35417",
+        "NCIT:C35850",
+        "NCIT:C3708",
+        "NCIT:C3720",
+        "NCIT:C3725",
+        "NCIT:C3728",
+        "NCIT:C3798",
+        "NCIT:C3844",
+        "NCIT:C3868",
+        "NCIT:C3871",
+        "NCIT:C4004",
+        "NCIT:C4024",
+        "NCIT:C4025",
+        "NCIT:C4028",
+        "NCIT:C4033",
+        "NCIT:C4034",
+        "NCIT:C4035",
+        "NCIT:C4044",
+        "NCIT:C4146",
+        "NCIT:C41617",
+        "NCIT:C4194",
+        "NCIT:C4247",
+        "NCIT:C4337",
+        "NCIT:C4436",
+        "NCIT:C45250",
+        "NCIT:C4648",
+        "NCIT:C4815",
+        "NCIT:C4824",
+        "NCIT:C4833",
+        "NCIT:C4863",
+        "NCIT:C4872",
+        "NCIT:C4878",
+        "NCIT:C4908",
+        "NCIT:C4910",
+        "NCIT:C4911",
+        "NCIT:C4912",
+        "NCIT:C4917",
+        "NCIT:C4951",
+        "NCIT:C4978",
+        "NCIT:C5669",
+        "NCIT:C62332",
+        "NCIT:C6510",
+        "NCIT:C65187",
+        "NCIT:C6932",
+        "NCIT:C71732",
+        "NCIT:C7510",
+        "NCIT:C7550",
+        "NCIT:C7558",
+        "NCIT:C7712",
+        "NCIT:C7825",
+        "NCIT:C7927",
+        "NCIT:C8294",
+        "NCIT:C8459",
+        "NCIT:C8644",
+        "NCIT:C8851",
+        "NCIT:C8923",
+        "NCIT:C8997",
+        "NCIT:C9039",
+        "NCIT:C9118",
+        "NCIT:C9120",
+        "NCIT:C9145",
+        "NCIT:C9231",
+        "NCIT:C9306",
+        "NCIT:C9335",
+        "NCIT:C9357",
+        "NCIT:C9384",
+        "NCIT:C9385"
+      ]
+    },
+    "NCIT:C188218": {
+      "name": "Neuroendocrine Tumor",
+      "key": "neuroendocrine_tumor",
+      "depth": 4,
+      "n_markers": 31,
+      "n_sources": 2,
+      "covered_descendants": [
+        "NCIT:C65187"
+      ]
+    },
+    "NCIT:C7550": {
+      "name": "Ovarian Serous Adenocarcinoma",
+      "key": "ovarian_serous_adenocarcinoma",
+      "depth": 6,
+      "n_markers": 30,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C4194": {
+      "name": "Invasive Breast Carcinoma of No Special Type",
+      "key": "invasive_breast_carcinoma_of_no_special_type",
+      "depth": 6,
+      "n_markers": 30,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C4028": {
+      "name": "Cervical Squamous Cell Carcinoma",
+      "key": "cervical_squamous_cell_carcinoma",
+      "depth": 5,
+      "n_markers": 30,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C4004": {
+      "name": "Gastric Adenocarcinoma",
+      "key": "gastric_adenocarcinoma",
+      "depth": 6,
+      "n_markers": 30,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C207803": {
+      "name": "Human Papillomavirus-Independent Head and Neck Mucosal Squamous Cell Carcinoma",
+      "key": "human_papillomavirus_independent_head_and_neck_mucosal_squamous_cell_carcinoma",
+      "depth": 6,
+      "n_markers": 30,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C8923": {
+      "name": "Acute Erythroid Leukemia",
+      "key": "acute_erythroid_leukemia",
+      "depth": 5,
+      "n_markers": 29,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C5669": {
+      "name": "Pleuropulmonary Blastoma",
+      "key": "pleuropulmonary_blastoma",
+      "depth": 4,
+      "n_markers": 29,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C171023": {
+      "name": "Human Papillomavirus-Related Head and Neck Mucosal Squamous Cell Carcinoma",
+      "key": "human_papillomavirus_related_head_and_neck_mucosal_squamous_cell_carcinoma",
+      "depth": 6,
+      "n_markers": 29,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C4044": {
+      "name": "Laryngeal Squamous Cell Carcinoma",
+      "key": "laryngeal_squamous_cell_carcinoma",
+      "depth": 6,
+      "n_markers": 28,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C4910": {
+      "name": "Colon Carcinoma",
+      "key": "colon_carcinoma",
+      "depth": 6,
+      "n_markers": 27,
+      "n_sources": 3,
+      "covered_descendants": []
+    },
+    "NCIT:C207229": {
+      "name": "Pancreatic Carcinoma",
+      "key": "pancreatic_carcinoma",
+      "depth": 5,
+      "n_markers": 25,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C8294",
+        "NCIT:C9120"
+      ]
+    },
+    "NCIT:C8997": {
+      "name": "Blastoma",
+      "key": "blastoma",
+      "depth": 3,
+      "n_markers": 23,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C5669"
+      ]
+    },
+    "NCIT:C4146": {
+      "name": "Chromophobe Renal Cell Carcinoma",
+      "key": "chromophobe_renal_cell_carcinoma",
+      "depth": 8,
+      "n_markers": 23,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C120456": {
+      "name": "Malignant Kidney Neoplasm Except Renal Pelvis",
+      "key": "malignant_kidney_neoplasm_except_renal_pelvis",
+      "depth": 6,
+      "n_markers": 20,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C7927": {
+      "name": "Liver Carcinoma",
+      "key": "liver_carcinoma",
+      "depth": 4,
+      "n_markers": 19,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C3099",
+        "NCIT:C35417",
+        "NCIT:C41617"
+      ]
+    },
+    "NCIT:C3161": {
+      "name": "Leukemia",
+      "key": "leukemia",
+      "depth": 3,
+      "n_markers": 18,
+      "n_sources": 2,
+      "covered_descendants": [
+        "NCIT:C3163",
+        "NCIT:C3167",
+        "NCIT:C3171",
+        "NCIT:C3174",
+        "NCIT:C8644",
+        "NCIT:C8923"
+      ]
+    },
+    "NCIT:C9357": {
+      "name": "Hodgkin Lymphoma",
+      "key": "hodgkin_lymphoma",
+      "depth": 4,
+      "n_markers": 17,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C3326": {
+      "name": "Adrenal Gland Pheochromocytoma",
+      "key": "adrenal_gland_pheochromocytoma",
+      "depth": 6,
+      "n_markers": 17,
+      "n_sources": 8,
+      "covered_descendants": []
+    },
+    "NCIT:C3208": {
+      "name": "Lymphoma",
+      "key": "lymphoma",
+      "depth": 3,
+      "n_markers": 13,
+      "n_sources": 4,
+      "covered_descendants": [
+        "NCIT:C3184",
+        "NCIT:C3209",
+        "NCIT:C3246",
+        "NCIT:C3457",
+        "NCIT:C3720",
+        "NCIT:C4337",
+        "NCIT:C8459",
+        "NCIT:C8851",
+        "NCIT:C9357"
+      ]
+    },
+    "NCIT:C3457": {
+      "name": "B-Cell Non-Hodgkin Lymphoma",
+      "key": "b_cell_non_hodgkin_lymphoma",
+      "depth": 4,
+      "n_markers": 12,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C3209",
+        "NCIT:C4337",
+        "NCIT:C8851"
+      ]
+    },
+    "NCIT:C3174": {
+      "name": "Chronic Myeloid Leukemia, BCR-ABL1 Positive",
+      "key": "chronic_myeloid_leukemia_bcr_abl1_positive",
+      "depth": 5,
+      "n_markers": 12,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C2920": {
+      "name": "Malignant Skin Neoplasm",
+      "key": "malignant_skin_neoplasm",
+      "depth": 3,
+      "n_markers": 11,
+      "n_sources": 5,
+      "covered_descendants": [
+        "NCIT:C3246",
+        "NCIT:C3510"
+      ]
+    },
+    "NCIT:C62332": {
+      "name": "Central Nervous System Carcinoma",
+      "key": "central_nervous_system_carcinoma",
+      "depth": 4,
+      "n_markers": 10,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C9306": {
+      "name": "Soft Tissue Sarcoma",
+      "key": "soft_tissue_sarcoma",
+      "depth": 4,
+      "n_markers": 9,
+      "n_sources": 2,
+      "covered_descendants": [
+        "NCIT:C3400",
+        "NCIT:C4247"
+      ]
+    },
+    "NCIT:C3844": {
+      "name": "Gallbladder Carcinoma",
+      "key": "gallbladder_carcinoma",
+      "depth": 6,
+      "n_markers": 9,
+      "n_sources": 2,
+      "covered_descendants": []
+    },
+    "NCIT:C35417": {
+      "name": "Intrahepatic Cholangiocarcinoma",
+      "key": "intrahepatic_cholangiocarcinoma",
+      "depth": 5,
+      "n_markers": 9,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C41617"
+      ]
+    },
+    "NCIT:C3017": {
+      "name": "Ependymoma",
+      "key": "ependymoma",
+      "depth": 6,
+      "n_markers": 9,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C170814": {
+      "name": "Primary Brain Neoplasm",
+      "key": "primary_brain_neoplasm",
+      "depth": 5,
+      "n_markers": 8,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C162993",
+        "NCIT:C3222",
+        "NCIT:C4951"
+      ]
+    },
+    "NCIT:C9039": {
+      "name": "Cervical Carcinoma",
+      "key": "cervical_carcinoma",
+      "depth": 6,
+      "n_markers": 7,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C4028"
+      ]
+    },
+    "NCIT:C4337": {
+      "name": "Mantle Cell Lymphoma",
+      "key": "mantle_cell_lymphoma",
+      "depth": 6,
+      "n_markers": 7,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C3200": {
+      "name": "Lung Neoplasm",
+      "key": "lung_neoplasm",
+      "depth": 3,
+      "n_markers": 7,
+      "n_sources": 3,
+      "covered_descendants": [
+        "NCIT:C2926",
+        "NCIT:C3493",
+        "NCIT:C3512",
+        "NCIT:C4878",
+        "NCIT:C4917"
+      ]
+    },
+    "NCIT:C9145": {
+      "name": "Osteosarcoma",
+      "key": "osteosarcoma",
+      "depth": 4,
+      "n_markers": 6,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C6510": {
+      "name": "Leiomyoma",
+      "key": "leiomyoma",
+      "depth": 5,
+      "n_markers": 5,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C3434"
+      ]
+    },
+    "NCIT:C3209": {
+      "name": "Follicular Lymphoma",
+      "key": "follicular_lymphoma",
+      "depth": 6,
+      "n_markers": 5,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C3184": {
+      "name": "Adult T-Cell Leukemia/Lymphoma",
+      "key": "adult_t_cell_leukemia_lymphoma",
+      "depth": 5,
+      "n_markers": 5,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C8644": {
+      "name": "B Acute Lymphoblastic Leukemia",
+      "key": "b_acute_lymphoblastic_leukemia",
+      "depth": 5,
+      "n_markers": 4,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C4648": {
+      "name": "Tongue Squamous Cell Carcinoma",
+      "key": "tongue_squamous_cell_carcinoma",
+      "depth": 7,
+      "n_markers": 4,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C4035": {
+      "name": "Thyroid Gland Papillary Carcinoma",
+      "key": "thyroid_gland_papillary_carcinoma",
+      "depth": 6,
+      "n_markers": 4,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C2924": {
+      "name": "Breast Ductal Carcinoma In Situ",
+      "key": "breast_ductal_carcinoma_in_situ",
+      "depth": 5,
+      "n_markers": 4,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C7558": {
+      "name": "Endometrial Carcinoma",
+      "key": "endometrial_carcinoma",
+      "depth": 6,
+      "n_markers": 3,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C3798": {
+      "name": "Malignant Peripheral Nerve Sheath Tumor",
+      "key": "malignant_peripheral_nerve_sheath_tumor",
+      "depth": 4,
+      "n_markers": 3,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C27294": {
+      "name": "Localized Primitive Neuroectodermal Tumor",
+      "key": "localized_primitive_neuroectodermal_tumor",
+      "depth": 4,
+      "n_markers": 3,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C156781": {
+      "name": "Biliary Tract Carcinoma",
+      "key": "biliary_tract_carcinoma",
+      "depth": 5,
+      "n_markers": 3,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C35417",
+        "NCIT:C3844",
+        "NCIT:C41617",
+        "NCIT:C4436"
+      ]
+    },
+    "NCIT:C153238": {
+      "name": "Metastatic Breast Carcinoma",
+      "key": "metastatic_breast_carcinoma",
+      "depth": 5,
+      "n_markers": 3,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C6932": {
+      "name": "Solitary Plasmacytoma",
+      "key": "solitary_plasmacytoma",
+      "depth": 5,
+      "n_markers": 2,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C41617": {
+      "name": "Cholangiolocellular Carcinoma",
+      "key": "cholangiolocellular_carcinoma",
+      "depth": 6,
+      "n_markers": 2,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C3725": {
+      "name": "Lymphangioleiomyomatosis",
+      "key": "lymphangioleiomyomatosis",
+      "depth": 6,
+      "n_markers": 2,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C3720": {
+      "name": "Anaplastic Large Cell Lymphoma",
+      "key": "anaplastic_large_cell_lymphoma",
+      "depth": 4,
+      "n_markers": 2,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C3049": {
+      "name": "Ganglioneuroma",
+      "key": "ganglioneuroma",
+      "depth": 5,
+      "n_markers": 2,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C129325": {
+      "name": "Diffuse Glioma",
+      "key": "diffuse_glioma",
+      "depth": 5,
+      "n_markers": 2,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C129295",
+        "NCIT:C3058",
+        "NCIT:C3288"
+      ]
+    },
+    "NCIT:C9384": {
+      "name": "Kidney Carcinoma",
+      "key": "kidney_carcinoma",
+      "depth": 6,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C4033",
+        "NCIT:C4146",
+        "NCIT:C7825",
+        "NCIT:C9385"
+      ]
+    },
+    "NCIT:C8459": {
+      "name": "Hepatosplenic T-Cell Lymphoma",
+      "key": "hepatosplenic_t_cell_lymphoma",
+      "depth": 6,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C7825": {
+      "name": "Recurrent Renal Cell Carcinoma",
+      "key": "recurrent_renal_cell_carcinoma",
+      "depth": 6,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C65187": {
+      "name": "Malignant Pancreatic Glucagonoma",
+      "key": "malignant_pancreatic_glucagonoma",
+      "depth": 6,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C4824": {
+      "name": "Tongue Carcinoma",
+      "key": "tongue_carcinoma",
+      "depth": 7,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C4648"
+      ]
+    },
+    "NCIT:C45250": {
+      "name": "Cutaneous Mature T-Cell and NK-Cell Neoplasm",
+      "key": "cutaneous_mature_t_cell_and_nk_cell_neoplasm",
+      "depth": 4,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C3246"
+      ]
+    },
+    "NCIT:C4247": {
+      "name": "Undifferentiated Pleomorphic Sarcoma",
+      "key": "undifferentiated_pleomorphic_sarcoma",
+      "depth": 6,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C4034": {
+      "name": "Recurrent Laryngeal Carcinoma",
+      "key": "recurrent_laryngeal_carcinoma",
+      "depth": 6,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C4025": {
+      "name": "Esophageal Adenocarcinoma",
+      "key": "esophageal_adenocarcinoma",
+      "depth": 6,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C3708": {
+      "name": "Germ Cell Tumor",
+      "key": "germ_cell_tumor",
+      "depth": 2,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C35850": {
+      "name": "Head and Neck Carcinoma",
+      "key": "head_and_neck_carcinoma",
+      "depth": 4,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C171023",
+        "NCIT:C207803",
+        "NCIT:C34447",
+        "NCIT:C3871",
+        "NCIT:C4034",
+        "NCIT:C4035",
+        "NCIT:C4044",
+        "NCIT:C4648",
+        "NCIT:C4815",
+        "NCIT:C4824",
+        "NCIT:C4833"
+      ]
+    },
+    "NCIT:C3529": {
+      "name": "Malignant Soft Palate Neoplasm",
+      "key": "malignant_soft_palate_neoplasm",
+      "depth": 7,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C3513": {
+      "name": "Esophageal Carcinoma",
+      "key": "esophageal_carcinoma",
+      "depth": 5,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": [
+        "NCIT:C4024",
+        "NCIT:C4025"
+      ]
+    },
+    "NCIT:C3434": {
+      "name": "Uterine Corpus Leiomyoma",
+      "key": "uterine_corpus_leiomyoma",
+      "depth": 6,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C3269": {
+      "name": "Schwannoma",
+      "key": "schwannoma",
+      "depth": 4,
+      "n_markers": 1,
+      "n_sources": 1,
+      "covered_descendants": []
+    },
+    "NCIT:C8804": {
+      "name": "Desmoplastic Small Round Cell Tumor",
+      "key": "dsrct",
+      "depth": 5,
+      "n_markers": 20,
+      "n_sources": 1,
+      "covered_descendants": []
+    }
+  }
+}

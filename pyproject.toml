@@ -1,0 +1,52 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "cellconsensus"
+version = "1.1.0"
+description = "Hierarchical unsupervised cell type annotation from consensus markers"
+readme = "README_PYPI.md"
+requires-python = ">=3.9"
+license = {text = "MIT"}
+authors = [
+    {name = "Antoine de Mathelin", email = "antoine.demat@gmail.com"},
+    {name = "tansey-lab"},
+]
+keywords = [
+    "single-cell",
+    "scRNA-seq",
+    "cell-type-annotation",
+    "consensus-markers",
+    "bioinformatics",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Bio-Informatics",
+]
+dependencies = [
+    "numpy",
+    "pandas",
+    "scanpy",
+    "scipy",
+    "pynndescent",
+]
+
+[project.urls]
+Homepage = "https://github.com/tansey-lab/cellconsensus"
+Repository = "https://github.com/tansey-lab/cellconsensus"
+Issues = "https://github.com/tansey-lab/cellconsensus/issues"
+
+[tool.setuptools.packages.find]
+include = ["cellconsensus*"]
+
+[tool.setuptools.package-data]
+cellconsensus = ["data/*.pkl", "data/*.json", "*.json"]
