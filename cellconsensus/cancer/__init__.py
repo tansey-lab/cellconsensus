@@ -1,4 +1,4 @@
-from .scoring import score_cancer, _score_consensus
+from .scoring import _score_consensus
 from .cache import (
     load_cancer_cache,
     load_cancer_codes,
@@ -10,7 +10,6 @@ from .cache import (
 )
 
 __all__ = [
-    "score_cancer",
     "_score_consensus",
     "load_cancer_cache",
     "load_cancer_codes",

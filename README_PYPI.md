@@ -35,9 +35,9 @@ pip install git+https://github.com/tansey-lab/cellconsensus.git
 
 ```python
 from cellconsensus import CellConsensus
-import scanpy as sc
+import anndata as ad
 
-adata = sc.read_h5ad("my_data.h5ad")
+adata = ad.read_h5ad("my_data.h5ad")
 
 cc = CellConsensus()
 cc.fit(adata, include_cancer=True, cancer_types=["lung_adenocarcinoma"])

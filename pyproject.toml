@@ -35,9 +35,9 @@ classifiers = [
 dependencies = [
     "numpy",
     "pandas",
-    "scanpy",
     "scipy",
     "pynndescent",
+    "anndata",
 ]
 
 [project.urls]

@@ -13,7 +13,8 @@ from .consensus import (
     load_consensus,
     load_cell_type,
 )
-from .clustering.ccc import build_nn_graph, quantile_normalize, compute_scores
+from .clustering.ccc import (compute_scores, double_quantile_normalize,
+                             build_score_graph)
 from .assignment import (
     smooth,
     cluster_average,
@@ -22,7 +23,6 @@ from .assignment import (
     run_sublevel,
 )
 from .cancer import (
-    score_cancer,
     _score_consensus,
     load_cancer_cache,
     validate_cancer_types,
@@ -71,10 +71,9 @@ class CellConsensus:
         Number of smoothing iterations over the NN graph (ccc mode).
     ref_top_k : int
         Number of top consensus markers per cell type.
-    n_top_genes : int
-        Number of highly variable genes for PCA (ccc mode).
-    n_pcs : int
-        Number of principal components (ccc mode).
+    graph_level : int
+        Consensus level whose programs define the score-space embedding the
+        ccc kNN graph is built on (ccc mode).
     cluster_key : str
         Column in adata.obs holding cluster labels (precomputed mode only).
 
@@ -83,7 +82,7 @@ class CellConsensus:
     >>> cc = CellConsensus()
     >>> cc.fit(adata)
     >>> labels = cc.predict(level=2)
-    >>> cancer = cc.predict_cancer()
+    >>> cancer = cc.predict_score("cancer")
     >>> # Bring your own clusters
     >>> cc = CellConsensus(clustering="precomputed", cluster_key="leiden")
     >>> cc.fit(adata)
@@ -99,7 +98,7 @@ class CellConsensus:
 
     def __init__(self, clustering="ccc", n_neighbors=20,
                  n_neighbors_lvl2=10, n_neighbors_lvl3=5,
-                 n_smooth=10, ref_top_k=200, n_top_genes=2000, n_pcs=30,
+                 n_smooth=10, ref_top_k=200, graph_level=3,
                  cluster_key=None):
         if clustering not in ("ccc", "precomputed"):
             raise ValueError(f"Unknown clustering: {clustering}. "
@@ -110,8 +109,7 @@ class CellConsensus:
         self.n_neighbors_lvl3 = n_neighbors_lvl3
         self.n_smooth = n_smooth
         self.ref_top_k = ref_top_k
-        self.n_top_genes = n_top_genes
-        self.n_pcs = n_pcs
+        self.graph_level = graph_level
         self.cluster_key = cluster_key
 
         # Populated by fit()
@@ -188,22 +186,33 @@ class CellConsensus:
         return self
 
     def _prepare_ccc(self, adata, verbose):
-        """Build the NN graph and quantile-normalize (ccc mode)."""
+        """Build the score-space NN graph and double-quantile-normalize.
+
+        Cells are double-quantile-normalized (zero-aware QN rows -> QN cols ->
+        L1 rows) and projected onto the level-``graph_level`` reference, giving
+        each cell a coordinate per cell-type program. The cosine kNN graph is
+        built in that score space — no normalize_total / log1p / HVG / PCA.
+        """
+        keys = list(load_consensus(self.graph_level)["consensus"].keys())
+        R = build_reference_matrix(np.asarray(adata.var_names), keys,
+                                   self.ref_top_k, level=self.graph_level)
         if verbose:
-            print(f"Building {self.n_neighbors}-NN graph "
-                  f"({adata.n_obs} cells)...")
-        nn_indices, _ = build_nn_graph(
-            adata, self.n_top_genes, self.n_pcs, self.n_neighbors)
+            print(f"Score-space {self.n_neighbors}-NN graph "
+                  f"({adata.n_obs} cells, {len(keys)} level-"
+                  f"{self.graph_level} programs, double quantile-norm)...")
+        nn_indices, Q, A = build_score_graph(adata, R, self.n_neighbors)
         self.nn_indices_ = nn_indices
         self.clusters_ = None
-        if verbose:
-            print("Quantile normalizing...")
-        self.Q_ = quantile_normalize(adata)
+        self.Q_ = Q
+        adata.obsm["X_cc_embed"] = A
 
     def _prepare_precomputed(self, adata, verbose):
-        """Validate clusters and quantile-normalize (precomputed mode)."""
-        import scanpy as sc
+        """Validate clusters and double-quantile-normalize (precomputed mode).
 
+        Uses the same data processing as ccc mode (double quantile-norm with
+        L1-normalized rows); the only difference is that scores are reduced by
+        averaging within the supplied clusters rather than NN smoothing.
+        """
         if self.cluster_key is None:
             raise ValueError("cluster_key must be set for precomputed mode.")
         if self.cluster_key not in adata.obs.columns:
@@ -217,12 +226,8 @@ class CellConsensus:
         if verbose:
             n_clusters = len(np.unique(self.clusters_))
             print(f"Using {n_clusters} precomputed clusters "
-                  f"({self.cluster_key})...")
-        sc.pp.normalize_total(adata, target_sum=1e4)
-        sc.pp.log1p(adata)
-        if verbose:
-            print("Quantile normalizing...")
-        self.Q_ = quantile_normalize(adata)
+                  f"({self.cluster_key}); double quantile-norm...")
+        self.Q_ = double_quantile_normalize(adata.X)
 
     # ----------------------------------------------------------- reducers
     def _level1_reduce(self, S):
@@ -267,7 +272,7 @@ class CellConsensus:
                 consensus=cache["consensus"])
             R = sparse.hstack([R, R_cancer]).tocsc()
 
-        S = compute_scores(self.Q_, R, ref_top_k=self.ref_top_k)
+        S = compute_scores(self.Q_, R)
         S = self._level1_reduce(S)
         self.S_ = S
         self.meta_keys_ = all_keys
@@ -379,38 +384,10 @@ class CellConsensus:
             out[cancer_mask] = np.array(sub_keys, dtype=object)[best]
         return out
 
-    def predict_cancer(self, cancer_types=None, verbose=True):
-        """Compute standalone cancer scores.
-
-        Scores each cell against cancer consensus markers, then reduces the
-        scores the same way as fit (NN smoothing for ccc, cluster averaging
-        for precomputed).
-
-        Parameters
-        ----------
-        cancer_types : list of str or None
-            E.g. ["breast_carcinoma", "melanoma"]. None for pan-cancer
-            (key "cancer"). Import ``list_cancer_types()`` for all valid keys.
-        verbose : bool
-
-        Returns
-        -------
-        DataFrame with cancer scores per cell, indexed by obs_names.
-        """
-        self._check_fitted()
-        if verbose:
-            print(f"Computing cancer scores ({self.clustering})...")
-        df = score_cancer(
-            self.Q_, self.var_names_, cancer_types,
-            self._level1_reduce, self.ref_top_k,
-        )
-        df.index = self.obs_names_
-        return df
-
     def predict_score(self, cell_types, level=1, smooth=True, verbose=False):
         """Score cells against any cell type(s) or cancer type(s).
 
-        Generalizes ``predict_cancer``: pass any consensus key (cell type at
+        Pass any consensus key (cell type at
         the chosen ``level``, or any cancer key) and get the per-cell score,
         reduced the same way as fit (NN smoothing for ccc, cluster averaging
         for precomputed).
@@ -561,7 +538,7 @@ class CellConsensus:
     def save(self, path):
         """Persist fitted state to ``path`` (pickle).
 
-        Saves what is required to call ``predict``, ``predict_cancer``, and
+        Saves what is required to call ``predict``, ``predict_score``, and
         ``predict_gene_set`` after ``load()``. The original AnnData is not
         stored (users keep that separately).
         """
@@ -576,8 +553,7 @@ class CellConsensus:
                 "n_neighbors_lvl3": self.n_neighbors_lvl3,
                 "n_smooth": self.n_smooth,
                 "ref_top_k": self.ref_top_k,
-                "n_top_genes": self.n_top_genes,
-                "n_pcs": self.n_pcs,
+                "graph_level": self.graph_level,
                 "cluster_key": self.cluster_key,
             },
             "fitted": {

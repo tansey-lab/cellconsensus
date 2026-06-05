@@ -161,7 +161,7 @@ def run_sublevel(Q, cell_labels, child_level, var_names, reduce_fn,
 
         R = build_reference_matrix(var_names, siblings, ref_top_k,
                                    level=child_level)
-        S = compute_scores(Q[cell_idx], R, ref_top_k=ref_top_k)
+        S = compute_scores(Q[cell_idx], R)
         S = reduce_fn(S, cell_idx)
         labels, scores = assign_argmax(S, siblings)
         new_labels[cell_idx] = labels
