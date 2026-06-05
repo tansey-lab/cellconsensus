@@ -23,7 +23,6 @@ from .assignment import (
     run_sublevel,
 )
 from .cancer import (
-    score_cancer,
     _score_consensus,
     load_cancer_cache,
     validate_cancer_types,
@@ -83,7 +82,7 @@ class CellConsensus:
     >>> cc = CellConsensus()
     >>> cc.fit(adata)
     >>> labels = cc.predict(level=2)
-    >>> cancer = cc.predict_cancer()
+    >>> cancer = cc.predict_score("cancer")
     >>> # Bring your own clusters
     >>> cc = CellConsensus(clustering="precomputed", cluster_key="leiden")
     >>> cc.fit(adata)
@@ -386,38 +385,10 @@ class CellConsensus:
             out[cancer_mask] = np.array(sub_keys, dtype=object)[best]
         return out
 
-    def predict_cancer(self, cancer_types=None, verbose=True):
-        """Compute standalone cancer scores.
-
-        Scores each cell against cancer consensus markers, then reduces the
-        scores the same way as fit (NN smoothing for ccc, cluster averaging
-        for precomputed).
-
-        Parameters
-        ----------
-        cancer_types : list of str or None
-            E.g. ["breast_carcinoma", "melanoma"]. None for pan-cancer
-            (key "cancer"). Import ``list_cancer_types()`` for all valid keys.
-        verbose : bool
-
-        Returns
-        -------
-        DataFrame with cancer scores per cell, indexed by obs_names.
-        """
-        self._check_fitted()
-        if verbose:
-            print(f"Computing cancer scores ({self.clustering})...")
-        df = score_cancer(
-            self.Q_, self.var_names_, cancer_types,
-            self._level1_reduce, self.ref_top_k,
-        )
-        df.index = self.obs_names_
-        return df
-
     def predict_score(self, cell_types, level=1, smooth=True, verbose=False):
         """Score cells against any cell type(s) or cancer type(s).
 
-        Generalizes ``predict_cancer``: pass any consensus key (cell type at
+        Pass any consensus key (cell type at
         the chosen ``level``, or any cancer key) and get the per-cell score,
         reduced the same way as fit (NN smoothing for ccc, cluster averaging
         for precomputed).
@@ -568,7 +539,7 @@ class CellConsensus:
     def save(self, path):
         """Persist fitted state to ``path`` (pickle).
 
-        Saves what is required to call ``predict``, ``predict_cancer``, and
+        Saves what is required to call ``predict``, ``predict_score``, and
         ``predict_gene_set`` after ``load()``. The original AnnData is not
         stored (users keep that separately).
         """

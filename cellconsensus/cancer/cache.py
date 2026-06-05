@@ -39,8 +39,8 @@ def load_cancer_codes():
 def list_cancer_types():
     """Return the list of all valid cancer type keys, sorted alphabetically.
 
-    Use this to see which strings can be passed as `cancer_types` to
-    `CellConsensus.predict_cancer()` or `score_cancer()`.
+    Use this to see which strings can be passed as cancer keys to
+    `CellConsensus.predict_score()`.
 
     Returns
     -------
