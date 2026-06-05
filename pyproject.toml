@@ -35,7 +35,6 @@ classifiers = [
 dependencies = [
     "numpy",
     "pandas",
-    "scanpy",
     "scipy",
     "pynndescent",
 ]

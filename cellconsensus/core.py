@@ -13,7 +13,7 @@ from .consensus import (
     load_consensus,
     load_cell_type,
 )
-from .clustering.ccc import (quantile_normalize, compute_scores,
+from .clustering.ccc import (compute_scores, double_quantile_normalize,
                              build_score_graph)
 from .assignment import (
     smooth,
@@ -207,9 +207,12 @@ class CellConsensus:
         adata.obsm["X_cc_embed"] = A
 
     def _prepare_precomputed(self, adata, verbose):
-        """Validate clusters and quantile-normalize (precomputed mode)."""
-        import scanpy as sc
+        """Validate clusters and double-quantile-normalize (precomputed mode).
 
+        Uses the same data processing as ccc mode (double quantile-norm with
+        L1-normalized rows); the only difference is that scores are reduced by
+        averaging within the supplied clusters rather than NN smoothing.
+        """
         if self.cluster_key is None:
             raise ValueError("cluster_key must be set for precomputed mode.")
         if self.cluster_key not in adata.obs.columns:
@@ -223,12 +226,8 @@ class CellConsensus:
         if verbose:
             n_clusters = len(np.unique(self.clusters_))
             print(f"Using {n_clusters} precomputed clusters "
-                  f"({self.cluster_key})...")
-        sc.pp.normalize_total(adata, target_sum=1e4)
-        sc.pp.log1p(adata)
-        if verbose:
-            print("Quantile normalizing...")
-        self.Q_ = quantile_normalize(adata)
+                  f"({self.cluster_key}); double quantile-norm...")
+        self.Q_ = double_quantile_normalize(adata.X)
 
     # ----------------------------------------------------------- reducers
     def _level1_reduce(self, S):

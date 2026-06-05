@@ -5,38 +5,6 @@ from scipy.stats import rankdata
 from pynndescent import NNDescent
 
 
-def quantile_normalize(adata):
-    """Per-gene quantile normalization + per-cell L1 normalization.
-
-    Returns sparse CSR matrix Q (n_cells x n_genes).
-    Zeros stay zero. Nonzero values are ranked per gene and scaled to (0, 1].
-    Each row is then L1-normalized (sums to 1) so cell-type scores are
-    panel-size-invariant.
-    """
-    X = adata.X
-    if not sparse.issparse(X):
-        X = sparse.csc_matrix(X)
-    else:
-        X = X.tocsc()
-
-    Q = X.copy().astype(np.float64)
-    for j in range(X.shape[1]):
-        nz_vals = Q.data[Q.indptr[j]:Q.indptr[j + 1]]
-        if len(nz_vals) == 0:
-            continue
-        ranks = rankdata(nz_vals, method="average")
-        Q.data[Q.indptr[j]:Q.indptr[j + 1]] = ranks / ranks.max()
-
-    Q = Q.tocsr()
-    for i in range(Q.shape[0]):
-        row_data = Q.data[Q.indptr[i]:Q.indptr[i + 1]]
-        norm = np.sum(row_data)
-        if norm > 0:
-            row_data /= norm
-
-    return Q
-
-
 def _quantile_axis(Q):
     """Zero-aware quantile-normalize the nonzero values of each CSR row.
 
