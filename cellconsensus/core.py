@@ -274,7 +274,7 @@ class CellConsensus:
                 consensus=cache["consensus"])
             R = sparse.hstack([R, R_cancer]).tocsc()
 
-        S = compute_scores(self.Q_, R, ref_top_k=self.ref_top_k)
+        S = compute_scores(self.Q_, R)
         S = self._level1_reduce(S)
         self.S_ = S
         self.meta_keys_ = all_keys

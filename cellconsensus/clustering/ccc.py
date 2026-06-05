@@ -93,19 +93,15 @@ def build_score_graph(adata, R, n_neighbors=20):
     return nn_indices[:, 1:], Q, A
 
 
-def compute_scores(Q, R, ref_top_k=None):
-    """L1-normalized cosine similarity S = Q @ R, optionally rescaled.
+def compute_scores(Q, R):
+    """L1-normalized cosine similarity S = Q @ R.
 
-    With L1-normalized rows of Q and L1-normalized columns of R, the score is
-    panel-size-invariant. The raw max of ``Q @ R`` is bounded by ``1 / k``
-    where k is the per-column support of R, so multiplying by ``ref_top_k``
-    lifts scores onto roughly ``[0, 1]`` and makes them comparable across
-    panels of different sizes. Pass ``ref_top_k=None`` to skip the rescale
-    (e.g. when assignment is by argmax and absolute scale does not matter).
+    With L1-normalized rows of Q and L1-normalized columns of R, each entry is
+    the fraction of the cell's expression mass captured by that reference
+    column's markers — already panel-size-invariant, so the same scale holds
+    whether R has one column (a gene set) or many (the full cell-type panel).
     """
     S = Q @ R
     if sparse.issparse(S):
         S = S.toarray()
-    if ref_top_k is not None:
-        S = S * float(ref_top_k)
     return S

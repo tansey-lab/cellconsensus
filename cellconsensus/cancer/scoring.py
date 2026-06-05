@@ -28,7 +28,7 @@ def _score_consensus(Q, var_names, consensus, keys, reduce_fn, ref_top_k=200):
     ndarray (n_cells x len(keys))
     """
     R = build_reference_matrix(var_names, keys, ref_top_k, consensus=consensus)
-    S = compute_scores(Q, R, ref_top_k=ref_top_k)
+    S = compute_scores(Q, R)
     return reduce_fn(S)
 
 
