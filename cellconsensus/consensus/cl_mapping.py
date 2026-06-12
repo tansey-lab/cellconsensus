@@ -24,6 +24,7 @@ META_TO_CL = {
     "absorptive_epithelial": "CL:0000584", "secretory_epithelial": "CL:0000160",
     "basal_squamous": "CL:0000646", "endocrine_epithelial": "CL:0000163",
     "ciliated_epithelial": "CL:0000067",
+    "alveolar_epithelial": "CL:0000322",
     "neuron": "CL:0000540", "astrocyte": "CL:0000127",
     "oligodendrocyte": "CL:0000128", "schwann_cell": "CL:0002573",
     "hsc": "CL:0000037", "msc": "CL:0000134",
@@ -43,6 +44,8 @@ META_TO_CL = {
     "at2": "CL:0002063", "goblet": "CL:0000160", "club": "CL:0000158",
     "acinar": "CL:0000622", "ductal": "CL:0002079",
     "at1": "CL:0002062", "multiciliated": "CL:0005012",
+    "alveolar_epithelial_other": "CL:0000322",
+    "respiratory_ciliated": "CL:0002145", "ciliated_epithelial_other": "CL:0000067",
     "beta_cell": "CL:0000169", "alpha_cell": "CL:0000171",
     "enteroendocrine": "CL:0000164",
 }
