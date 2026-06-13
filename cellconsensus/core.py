@@ -98,7 +98,7 @@ class CellConsensus:
 
     def __init__(self, clustering="ccc", n_neighbors=20,
                  n_neighbors_lvl2=10, n_neighbors_lvl3=5,
-                 n_smooth=10, ref_top_k=200, graph_level=3,
+                 n_smooth=1, ref_top_k=200, graph_level=3,
                  cluster_key=None):
         if clustering not in ("ccc", "precomputed"):
             raise ValueError(f"Unknown clustering: {clustering}. "
