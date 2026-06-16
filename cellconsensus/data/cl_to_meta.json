@@ -12,7 +12,6 @@
     "stem_progenitor": "stem / progenitor cell",
     "germ_cell": "germ cell",
     "adipocyte": "adipocyte",
-    "muscle": "muscle cell",
     "other": "other",
     "mast_cell": "mast cell",
     "cancer": "cancer / neoplastic cell"
@@ -58,7 +57,6 @@
     "hsc": "hematopoietic stem/progenitor cell",
     "msc": "mesenchymal stem cell",
     "stem_other": "other stem/progenitor cell",
-    "muscle": "muscle cell",
     "adipocyte": "adipocyte",
     "parathyroid": "parathyroid cell",
     "germ_cell": "germ cell",
@@ -136,7 +134,6 @@
     "msc": "mesenchymal stem cell",
     "stem_other": "other stem/progenitor cell",
     "fibroblast": "fibroblast",
-    "muscle": "muscle cell",
     "adipocyte": "adipocyte",
     "parathyroid": "parathyroid cell",
     "germ_cell": "germ cell",
@@ -6389,45 +6386,45 @@
       "name": "prostate stem cell"
     },
     "CL:0000594": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "skeletal muscle satellite cell"
     },
     "CL:0008020": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "skeletal muscle satellite myogenic cell"
     },
     "CL:0008011": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "skeletal muscle satellite stem cell"
     },
     "CL:0000680": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "muscle precursor cell"
     },
     "CL:0000056": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "myoblast"
     },
     "CL:0000515": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "skeletal muscle myoblast"
     },
     "CL:0000513": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "cardiac muscle myoblast"
     },
     "CL:0002334": {
@@ -6659,135 +6656,135 @@
       "name": "cell"
     },
     "CL:0000183": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "contractile cell"
     },
     "CL:0000187": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "muscle cell"
     },
     "CL:0000737": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "striated muscle cell"
     },
     "CL:0000746": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "cardiac muscle cell"
     },
     "CL:0008002": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "skeletal muscle fiber"
     },
     "CL:0000188": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "cell of skeletal muscle"
     },
     "CL:0000190": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "fast muscle cell"
     },
     "CL:0000189": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "slow muscle cell"
     },
     "CL:0002211": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "type I muscle cell"
     },
     "CL:0002212": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "type II muscle cell"
     },
     "CL:0002372": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "myotube"
     },
     "CL:0002673": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "tongue muscle cell"
     },
     "CL:2000046": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "ventricular cardiac muscle cell"
     },
     "CL:0002129": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "regular atrial cardiac myocyte"
     },
     "CL:0002131": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "regular ventricular cardiac myocyte"
     },
     "CL:0002068": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "Purkinje myocyte"
     },
     "CL:0002072": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "nodal myocyte"
     },
     "CL:1000477": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "cardiac pacemaker cell of sinoatrial node"
     },
     "CL:1000287": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "myocyte of anterior internodal tract"
     },
     "CL:1000290": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "myocyte of middle internodal tract"
     },
     "CL:1000291": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "myocyte of posterior internodal tract"
     },
     "CL:0000569": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "cardiac mesenchymal cell"
     },
     "CL:0000058": {
@@ -7025,9 +7022,9 @@
       "name": "kidney cortex artery cell"
     },
     "CL:0002495": {
-      "meta": "muscle",
-      "meta2": "muscle",
-      "meta3": "muscle",
+      "meta": "other",
+      "meta2": "other",
+      "meta3": "other",
       "name": "fetal cardiomyocyte"
     },
     "CL:4040003": {
