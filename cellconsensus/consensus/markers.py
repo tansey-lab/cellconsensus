@@ -142,7 +142,7 @@ def build_reference_matrix(var_names, meta_keys, ref_top_k=200, level=1,
         for g, s in top_genes:
             row_idx.append(gene_to_idx[g])
             col_idx.append(j)
-            vals.append(s)
+            vals.append(np.sqrt(s))   # EXPERIMENT: sqrt-compress weights before L1-norm
 
     R = sparse.csc_matrix((vals, (row_idx, col_idx)),
                           shape=(n_genes, len(meta_keys)))
