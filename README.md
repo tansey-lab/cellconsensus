@@ -21,7 +21,7 @@ https://github.com/user-attachments/assets/39d02a8a-e543-437a-a16e-243a80a32e10
 
 ## Installation
 
-Latest release (1.1.0) from PyPI:
+Latest release (1.2.0) from PyPI:
 
 ```bash
 pip install cellconsensus

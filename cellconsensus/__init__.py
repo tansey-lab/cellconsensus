@@ -1,6 +1,6 @@
 """CellConsensus: hierarchical unsupervised cell type annotation."""
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 from .core import CellConsensus
 from .cancer import list_cancer_types
