@@ -114,6 +114,7 @@ def main(argv=None):
     for lvl in levels:
         columns[f"level_{lvl}"] = cc.predict(level=lvl,
                                              output=args.output_format)
+        columns[f"level_{lvl}_score"] = cc.confidence(level=lvl).values
     result = pd.DataFrame(columns, index=adata.obs_names)
 
     if args.save_model:

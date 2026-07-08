@@ -384,6 +384,27 @@ class CellConsensus:
             out[cancer_mask] = np.array(sub_keys, dtype=object)[best]
         return out
 
+    def confidence(self, level=3):
+        """Return the winning (argmax) score per cell at ``level``.
+
+        This is the score of the assigned cell type — a per-cell confidence
+        for the label returned by :meth:`predict` at the same level.
+
+        Parameters
+        ----------
+        level : int
+            Granularity level (1, 2, or 3).
+
+        Returns
+        -------
+        pandas Series of float, indexed by obs_names.
+        """
+        self._check_fitted()
+        if level not in self._predictions:
+            raise RuntimeError(f"Level {level} predictions not available.")
+        scores = np.asarray(self._predictions[level][1], dtype=float)
+        return pd.Series(scores, index=self.obs_names_, name="confidence")
+
     def predict_score(self, cell_types, level=1, smooth=True, verbose=False):
         """Score cells against any cell type(s) or cancer type(s).
 

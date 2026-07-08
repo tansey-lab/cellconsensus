@@ -1,0 +1,23 @@
+{
+  "outdir": "$.dataset.dataPath",
+  "clustering": "$.dataset.params.annotate_options.clustering",
+  "cluster_key": "$.dataset.params.annotate_options.cluster_key",
+  "levels": "$.dataset.params.annotate_options.levels",
+  "output_format": "$.dataset.params.annotate_options.output_format",
+  "n_neighbors": "$.dataset.params.annotate_options.n_neighbors",
+  "n_neighbors_lvl2": "$.dataset.params.annotate_options.n_neighbors_lvl2",
+  "n_neighbors_lvl3": "$.dataset.params.annotate_options.n_neighbors_lvl3",
+  "n_smooth": "$.dataset.params.annotate_options.n_smooth",
+  "ref_top_k": "$.dataset.params.annotate_options.ref_top_k",
+  "graph_level": "$.dataset.params.annotate_options.graph_level",
+  "include_cancer": "$.dataset.params.annotate_options.include_cancer",
+  "cancer_types": "$.dataset.params.annotate_options.cancer_types",
+  "save_model": "$.dataset.params.annotate_options.save_model",
+  "skip_visualize": "$.dataset.params.visualize_options.skip_visualize",
+  "visualize_spatial_key": "$.dataset.params.visualize_options.visualize_spatial_key",
+  "visualize_point_size": "$.dataset.params.visualize_options.visualize_point_size",
+  "email": "$.dataset.params.input_output_options.email",
+  "multiqc_title": "$.dataset.params.input_output_options.multiqc_title",
+  "publish_dir_mode": "$.dataset.params.generic_options.publish_dir_mode",
+  "validate_params": "$.dataset.params.generic_options.validate_params"
+}

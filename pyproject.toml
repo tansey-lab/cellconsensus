@@ -40,10 +40,12 @@ dependencies = [
     "numba>=0.57",
     "anndata>=0.8",
     "scanpy>=1.10.3",
+    "matplotlib>=3.5",
 ]
 
 [project.scripts]
 cellconsensus-annotate = "cellconsensus.cli.annotate:main"
+cellconsensus-visualize = "cellconsensus.cli.visualize:main"
 cellconsensus-list-cell-types = "cellconsensus.cli.list_cell_types:main"
 cellconsensus-list-cancer-types = "cellconsensus.cli.list_cancer_types:main"
 

@@ -12,8 +12,42 @@ The directories listed below will be created in the results directory after the 
 
 The pipeline is built using [Nextflow](https://www.nextflow.io/) and processes data using the following steps:
 
+- [Annotate](#annotate) - Hierarchical cell type annotation with CellConsensus
+- [Visualize](#visualize) - Annotation summary plots (PDF)
 - [MultiQC](#multiqc) - Aggregate report describing results and QC from the whole pipeline
 - [Pipeline information](#pipeline-information) - Report metrics generated during the workflow execution
+
+### Annotate
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `annotate/<sample>_annotate/`
+  - `predictions.csv`: per-cell level-1/2/3 labels and confidence scores.
+  - `annotated.h5ad`: the input AnnData with `cellconsensus_level_*` label and
+    `cellconsensus_level_*_score` confidence columns added to `.obs`.
+  - `model.pkl`: the fitted model (only when `--save_model` is set).
+
+</details>
+
+Runs `cellconsensus-annotate` to assign cell types at three levels of
+granularity using consensus marker genes.
+
+### Visualize
+
+<details markdown="1">
+<summary>Output files</summary>
+
+- `visualize/<sample>_visualize/`
+  - `plots.pdf`: a multi-page summary rendered from the annotated AnnData —
+    bar plots of the cell-type breakdown at every level, a spatial scatter of
+    `obsm['spatial']` coloured by cell type (when present), and histograms of
+    the confidence scores.
+
+</details>
+
+Runs `cellconsensus-visualize` on the `annotated.h5ad` from the annotate step.
+Disable with `--skip_visualize`.
 
 ### MultiQC
 

@@ -10,7 +10,8 @@ include { softwareVersionsToYAML } from '../subworkflows/nf-core/utils_nfcore_pi
 include { methodsDescriptionText } from '../subworkflows/local/utils_nfcore_cellconsensus_pipeline'
 
 // CELLCONSENSUS pipeline modules
-include { CELLCONSENSUS_ANNOTATE } from '../modules/local/cellconsensus_annotate/main'
+include { CELLCONSENSUS_ANNOTATE  } from '../modules/local/cellconsensus_annotate/main'
+include { CELLCONSENSUS_VISUALIZE } from '../modules/local/cellconsensus_visualize/main'
 
 /*
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -34,6 +35,12 @@ workflow CELLCONSENSUS {
     // Step 1: Annotate - Hierarchical cell type annotation
     CELLCONSENSUS_ANNOTATE(ch_samplesheet)
     ch_versions = ch_versions.mix(CELLCONSENSUS_ANNOTATE.out.versions.first())
+
+    // Step 2: Visualize - Render annotation summary plots to PDF
+    if (!params.skip_visualize) {
+        CELLCONSENSUS_VISUALIZE(CELLCONSENSUS_ANNOTATE.out.results)
+        ch_versions = ch_versions.mix(CELLCONSENSUS_VISUALIZE.out.versions.first())
+    }
 
     //
     // Collate and save software versions
