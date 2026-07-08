@@ -33,12 +33,21 @@ classifiers = [
     "Topic :: Scientific/Engineering :: Bio-Informatics",
 ]
 dependencies = [
-    "numpy",
-    "pandas",
-    "scipy",
-    "pynndescent",
-    "anndata",
+    "numpy>=1.22",
+    "pandas>=1.4",
+    "scipy>=1.8",
+    "pynndescent>=0.5.8",
+    "numba>=0.57",
+    "anndata>=0.8",
+    "scanpy>=1.10.3",
+    "matplotlib>=3.5",
 ]
+
+[project.scripts]
+cellconsensus-annotate = "cellconsensus.cli.annotate:main"
+cellconsensus-visualize = "cellconsensus.cli.visualize:main"
+cellconsensus-list-cell-types = "cellconsensus.cli.list_cell_types:main"
+cellconsensus-list-cancer-types = "cellconsensus.cli.list_cancer_types:main"
 
 [project.urls]
 Homepage = "https://github.com/tansey-lab/cellconsensus"
@@ -46,7 +55,36 @@ Repository = "https://github.com/tansey-lab/cellconsensus"
 Issues = "https://github.com/tansey-lab/cellconsensus/issues"
 
 [tool.setuptools.packages.find]
+where = ["src"]
 include = ["cellconsensus*"]
 
 [tool.setuptools.package-data]
 cellconsensus = ["data/*.pkl", "data/*.json", "*.json"]
+
+[dependency-groups]
+dev = [
+    "pytest>=7.0",
+    "pytest-cov>=4.0",
+    "pytest-mock",
+    "ruff>=0.1.0",
+    "pre-commit>=3.0",
+    "ipython",
+]
+
+[tool.ruff]
+line-length = 88
+target-version = "py39"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "N", "W", "UP"]
+ignore = [
+    "E501",  # Line too long (handled by formatter, but not always fixable)
+    "N803",  # Argument name should be lowercase (common in ML: X for matrices)
+    "N806",  # Variable name should be lowercase (common in ML: B, K, M for batch/dim)
+    "N812",  # Lowercase imported as non-lowercase (common: torch.nn.functional as F)
+    "N817",  # CamelCase imported as acronym
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["src"]

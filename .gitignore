@@ -1,10 +1,64 @@
+# Large result files
+results/
+*.npz
+*.npy
+notebooks/cpdb_inputs/
+*.h5ad
+*.loom
+*.h5
+*.h5mu
+*.zarr
+*.mtx
+*.np[yz]
+*.rds
+*.pt
+*.parquet
+*.csv.gz
+*.tsv
+*.pdf
+*.png
+*.svg
+*.tiff
+*.jpg
+*.jpeg
+figures/
+
+# Python
 __pycache__/
 *.pyc
+*.pyo
+*.pyd
+.Python
 *.egg-info/
+.eggs/
 dist/
 build/
-.eggs/
-*.h5ad
-.claude/
-*.h5
+*.whl
+.venv/
+venv/
+.pytest_cache/
+
+# uv (keep uv.lock for reproducibility)
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
 .DS_Store
+**/.DS_Store
+
+# Jupyter
+*.nbc
+*.nbi
+.ipynb_checkpoints/
+.Rapp.history
+
+# Legacy scripts with hardcoded paths (archived)
+archived_scripts/
+src/alarmist.egg-info/
+work/*
+results/*
+.nextflow
