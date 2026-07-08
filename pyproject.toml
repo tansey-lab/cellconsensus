@@ -39,7 +39,13 @@ dependencies = [
     "pynndescent>=0.5.8",
     "numba>=0.57",
     "anndata>=0.8",
+    "scanpy>=1.10.3",
 ]
+
+[project.scripts]
+cellconsensus-annotate = "cellconsensus.cli.annotate:main"
+cellconsensus-list-cell-types = "cellconsensus.cli.list_cell_types:main"
+cellconsensus-list-cancer-types = "cellconsensus.cli.list_cancer_types:main"
 
 [project.urls]
 Homepage = "https://github.com/tansey-lab/cellconsensus"

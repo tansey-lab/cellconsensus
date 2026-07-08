@@ -1,0 +1,22 @@
+repository_type: pipeline
+
+nf_core_version: 3.5.2
+
+lint:
+  files_exist:
+    - conf/igenomes.config
+    - conf/igenomes_ignored.config
+
+template:
+  org: nf-core
+  name: cellconsensus
+  description: Hierarchical unsupervised cell type annotation from consensus markers
+  author: Antoine de Mathelin, tansey-lab
+  version: 1.2.0
+  force: true
+  outdir: ./nextflow
+  skip_features:
+    - igenomes
+    - fastqc
+    - gpu
+  is_nfcore: true
