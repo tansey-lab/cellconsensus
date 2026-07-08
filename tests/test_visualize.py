@@ -27,12 +27,12 @@ def test_visualize_writes_pdf(tmp_path):
     rendered = visualize(adata, str(out), verbose=False)
 
     assert out.exists() and out.stat().st_size > 0
-    assert rendered["barplots"] == ["cellconsensus_level_1",
-                                    "cellconsensus_level_2"]
-    assert rendered["spatial"] == ["cellconsensus_level_1",
-                                   "cellconsensus_level_2"]
-    assert set(rendered["histograms"]) == {"cellconsensus_level_1_score",
-                                           "cellconsensus_level_2_score"}
+    assert rendered["barplots"] == ["cellconsensus_level_1", "cellconsensus_level_2"]
+    assert rendered["spatial"] == ["cellconsensus_level_1", "cellconsensus_level_2"]
+    assert set(rendered["histograms"]) == {
+        "cellconsensus_level_1_score",
+        "cellconsensus_level_2_score",
+    }
 
 
 def test_visualize_without_spatial(tmp_path):

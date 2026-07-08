@@ -1,4 +1,5 @@
 """``cellconsensus-list-cancer-types`` — list valid cancer-type keys."""
+
 import argparse
 
 from .. import __version__
@@ -9,8 +10,9 @@ def build_parser():
         prog="cellconsensus-list-cancer-types",
         description="List valid cancer-type keys, one per line.",
     )
-    p.add_argument("--version", action="version",
-                   version=f"cellconsensus {__version__}")
+    p.add_argument(
+        "--version", action="version", version=f"cellconsensus {__version__}"
+    )
     return p
 
 

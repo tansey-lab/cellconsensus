@@ -7,6 +7,7 @@ Reads an annotated AnnData ``.h5ad`` (typically the ``--output-h5ad`` from
 * a spatial scatter of ``obsm['spatial']`` coloured by cell type (if present),
 * histograms of confidence scores and any other numeric score columns.
 """
+
 import argparse
 import sys
 
@@ -17,36 +18,45 @@ def build_parser():
     p = argparse.ArgumentParser(
         prog="cellconsensus-visualize",
         description="Render cell-type breakdown, spatial, and score plots "
-                    "from an annotated AnnData to a PDF.",
+        "from an annotated AnnData to a PDF.",
     )
-    p.add_argument("--version", action="version",
-                   version=f"cellconsensus {__version__}")
+    p.add_argument(
+        "--version", action="version", version=f"cellconsensus {__version__}"
+    )
     p.add_argument("input", help="Path to annotated AnnData (.h5ad) file.")
     p.add_argument(
-        "-o", "--output", default=None,
+        "-o",
+        "--output",
+        default=None,
         help="Output PDF path (default: <input>.plots.pdf).",
     )
     p.add_argument(
-        "--level-cols", default=None,
+        "--level-cols",
+        default=None,
         help="Comma-separated obs columns to treat as cell-type levels "
-             "(default: auto-detect cellconsensus_level_* columns).",
+        "(default: auto-detect cellconsensus_level_* columns).",
     )
     p.add_argument(
-        "--score-cols", default=None,
+        "--score-cols",
+        default=None,
         help="Comma-separated numeric obs columns to histogram "
-             "(default: auto-detect *_score and numeric cellconsensus_* "
-             "columns).",
+        "(default: auto-detect *_score and numeric cellconsensus_* "
+        "columns).",
     )
     p.add_argument(
-        "--spatial-key", default="spatial",
+        "--spatial-key",
+        default="spatial",
         help="Key in adata.obsm with 2-D coordinates (default: spatial).",
     )
     p.add_argument(
-        "--point-size", type=float, default=6.0,
+        "--point-size",
+        type=float,
+        default=6.0,
         help="Marker size for the spatial scatter (default: 6).",
     )
-    p.add_argument("-q", "--quiet", action="store_true",
-                   help="Suppress progress output.")
+    p.add_argument(
+        "-q", "--quiet", action="store_true", help="Suppress progress output."
+    )
     return p
 
 

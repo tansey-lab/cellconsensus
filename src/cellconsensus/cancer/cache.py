@@ -4,6 +4,7 @@ The cancer cache (consensus_cache_cancer.pkl) contains 119 cancer types
 keyed by slugified NCIT term names (e.g. 'melanoma', 'breast_carcinoma').
 The root key 'cancer' (NCIT:C3262 Neoplasm) aggregates all descendants.
 """
+
 import json
 import pickle
 from pathlib import Path
@@ -66,9 +67,7 @@ def _build_key_maps():
     codes = load_cancer_codes()
     entries = codes.get("entries", {})
     _key_to_ncit = {info["key"]: ncit for ncit, info in entries.items()}
-    _key_to_display_name = {
-        info["key"]: info["name"] for ncit, info in entries.items()
-    }
+    _key_to_display_name = {info["key"]: info["name"] for ncit, info in entries.items()}
 
 
 def cancer_key_to_ncit(key):

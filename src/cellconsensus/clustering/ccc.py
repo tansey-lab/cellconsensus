@@ -1,8 +1,9 @@
 """CellConsensus Clustering (CCC): NN-based unsupervised cell typing."""
+
 import numpy as np
+from pynndescent import NNDescent
 from scipy import sparse
 from scipy.stats import rankdata
-from pynndescent import NNDescent
 
 
 def _quantile_axis(Q):
@@ -31,12 +32,15 @@ def double_quantile_normalize(X):
     (each row sums to 1) pairs with the L1-normalized reference columns so
     ``Q @ R`` scores are panel-size-invariant. Returns CSR.
     """
-    X = X.tocsr().astype(np.float64).copy() if sparse.issparse(X) \
+    X = (
+        X.tocsr().astype(np.float64).copy()
+        if sparse.issparse(X)
         else sparse.csr_matrix(X, dtype=np.float64)
-    Qr = _quantile_axis(X)                      # quantile-norm rows
-    Qc = _quantile_axis(Qr.T.tocsr())           # quantile-norm cols (rows of T)
+    )
+    Qr = _quantile_axis(X)  # quantile-norm rows
+    Qc = _quantile_axis(Qr.T.tocsr())  # quantile-norm cols (rows of T)
     Q = Qc.T.tocsr()
-    rs = np.asarray(Q.sum(1)).ravel()           # L1 rows (per-cell, sums to 1)
+    rs = np.asarray(Q.sum(1)).ravel()  # L1 rows (per-cell, sums to 1)
     rs[rs == 0] = 1.0
     return (sparse.diags(1.0 / rs) @ Q).tocsr()
 
@@ -54,8 +58,7 @@ def build_score_graph(adata, R, n_neighbors=20):
     """
     Q = double_quantile_normalize(adata.X)
     A = Q @ R
-    A = np.asarray(A.todense()) if sparse.issparse(A) \
-        else np.ascontiguousarray(A)
+    A = np.asarray(A.todense()) if sparse.issparse(A) else np.ascontiguousarray(A)
     index = NNDescent(A, metric="cosine")
     nn_indices, _ = index.query(A, k=n_neighbors + 1)
     return nn_indices[:, 1:], Q, A

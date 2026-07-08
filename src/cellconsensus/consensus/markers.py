@@ -1,9 +1,10 @@
 """Load consensus marker caches and build reference matrices."""
+
 import json
 import pickle
+from pathlib import Path
 
 import numpy as np
-from pathlib import Path
 from scipy import sparse
 
 from .gene_alias import resolve_gene_names
@@ -67,8 +68,9 @@ def get_meta_keys(level=1, include_cancer=False):
     groups = load_meta_groups(level=level)
     all_cancer_keys = {k for k in cache["consensus"] if k.startswith("cancer")}
     exclude = {"other"} | all_cancer_keys
-    return [k for k in sorted(cache["consensus"].keys())
-            if k not in exclude and k in groups]
+    return [
+        k for k in sorted(cache["consensus"].keys()) if k not in exclude and k in groups
+    ]
 
 
 def load_cell_type(level=1):
@@ -103,8 +105,9 @@ def load_cell_type(level=1):
     return {k: groups[k] for k in keys}
 
 
-def build_reference_matrix(var_names, meta_keys, ref_top_k=200, level=1,
-                           consensus=None):
+def build_reference_matrix(
+    var_names, meta_keys, ref_top_k=200, level=1, consensus=None
+):
     """Build reference matrix R (n_genes x n_meta_types), L1-normalized columns.
 
     Parameters
@@ -142,13 +145,12 @@ def build_reference_matrix(var_names, meta_keys, ref_top_k=200, level=1,
         for g, s in top_genes:
             row_idx.append(gene_to_idx[g])
             col_idx.append(j)
-            vals.append(np.sqrt(s))   # EXPERIMENT: sqrt-compress weights before L1-norm
+            vals.append(np.sqrt(s))  # EXPERIMENT: sqrt-compress weights before L1-norm
 
-    R = sparse.csc_matrix((vals, (row_idx, col_idx)),
-                          shape=(n_genes, len(meta_keys)))
+    R = sparse.csc_matrix((vals, (row_idx, col_idx)), shape=(n_genes, len(meta_keys)))
     # L1-normalize each column (sum to 1)
     for j in range(R.shape[1]):
-        col_data = R.data[R.indptr[j]:R.indptr[j + 1]]
+        col_data = R.data[R.indptr[j] : R.indptr[j + 1]]
         norm = np.sum(col_data)
         if norm > 0:
             col_data /= norm

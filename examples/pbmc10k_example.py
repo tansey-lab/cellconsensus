@@ -8,12 +8,13 @@ Outputs:
   assets/pbmc_cell_types.png   — UMAP colored by level 1 / 2 / 3 labels
   assets/pbmc_score_lvl1.png   — UMAP per-type level-1 score heatmaps
 """
+
 import os
 import urllib.request
 
+import matplotlib.pyplot as plt
 import numpy as np
 import scanpy as sc
-import matplotlib.pyplot as plt
 
 from cellconsensus import CellConsensus
 
@@ -23,8 +24,10 @@ DATA = os.path.join(HERE, "data")
 os.makedirs(ASSETS, exist_ok=True)
 os.makedirs(DATA, exist_ok=True)
 
-URL = ("https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_10k_v3/"
-       "pbmc_10k_v3_filtered_feature_bc_matrix.h5")
+URL = (
+    "https://cf.10xgenomics.com/samples/cell-exp/3.0.0/pbmc_10k_v3/"
+    "pbmc_10k_v3_filtered_feature_bc_matrix.h5"
+)
 H5 = os.path.join(DATA, "pbmc10k_v3.h5")
 
 if not os.path.exists(H5):
@@ -58,46 +61,76 @@ def scatter_cat(ax, labels, title):
     cmap = plt.get_cmap("tab20")
     for i, c in enumerate(cats):
         m = labels == c
-        ax.scatter(emb[m, 0], emb[m, 1], s=5, c=[cmap(i % 20)],
-                   label=f"{c} ({m.sum()})", linewidths=0, rasterized=True)
+        ax.scatter(
+            emb[m, 0],
+            emb[m, 1],
+            s=5,
+            c=[cmap(i % 20)],
+            label=f"{c} ({m.sum()})",
+            linewidths=0,
+            rasterized=True,
+        )
     ax.set_title(title, fontsize=13)
-    ax.set_xticks([]); ax.set_yticks([])
-    ax.legend(loc="center left", bbox_to_anchor=(1.0, 0.5),
-              fontsize=8, markerscale=2.5, frameon=False)
+    ax.set_xticks([])
+    ax.set_yticks([])
+    ax.legend(
+        loc="center left",
+        bbox_to_anchor=(1.0, 0.5),
+        fontsize=8,
+        markerscale=2.5,
+        frameon=False,
+    )
 
 
 # --- Figure 1: CellConsensus levels 1 / 2 / 3 ---
 fig, axes = plt.subplots(1, 3, figsize=(22, 6.5))
 for ax, lvl in zip(axes, (1, 2, 3)):
-    scatter_cat(ax, adata.obs[f"cc_lvl{lvl}"].astype(str).values,
-                f"CellConsensus level {lvl}")
-fig.suptitle(f"10k PBMC (v3) — CellConsensus predictions  "
-             f"(n={adata.n_obs})", fontsize=14, y=1.02)
+    scatter_cat(
+        ax, adata.obs[f"cc_lvl{lvl}"].astype(str).values, f"CellConsensus level {lvl}"
+    )
+fig.suptitle(
+    f"10k PBMC (v3) — CellConsensus predictions  (n={adata.n_obs})", fontsize=14, y=1.02
+)
 fig.tight_layout()
 out1 = os.path.join(ASSETS, "pbmc_cell_types.png")
-fig.savefig(out1, dpi=130, bbox_inches="tight"); plt.close(fig)
+fig.savefig(out1, dpi=130, bbox_inches="tight")
+plt.close(fig)
 print(f"  wrote {out1}")
 
 # --- Figure 2: level-1 per-type score heatmaps on UMAP ---
-cols = list(S.columns); vals_all = S.values
-n = len(cols); ncol = 4; nrow = int(np.ceil(n / ncol))
+cols = list(S.columns)
+vals_all = S.values
+n = len(cols)
+ncol = 4
+nrow = int(np.ceil(n / ncol))
 fig, axes = plt.subplots(nrow, ncol, figsize=(4 * ncol, 3.6 * nrow))
 axes = np.atleast_2d(axes).ravel()
 vmax = float(np.quantile(vals_all, 0.995))
 for j, name in enumerate(cols):
     v = vals_all[:, j]
     order = np.argsort(v)
-    sc_h = axes[j].scatter(emb[order, 0], emb[order, 1], c=v[order], s=5,
-                           cmap="viridis", vmin=0, vmax=vmax,
-                           linewidths=0, rasterized=True)
+    sc_h = axes[j].scatter(
+        emb[order, 0],
+        emb[order, 1],
+        c=v[order],
+        s=5,
+        cmap="viridis",
+        vmin=0,
+        vmax=vmax,
+        linewidths=0,
+        rasterized=True,
+    )
     axes[j].set_title(name, fontsize=11)
-    axes[j].set_xticks([]); axes[j].set_yticks([])
+    axes[j].set_xticks([])
+    axes[j].set_yticks([])
     plt.colorbar(sc_h, ax=axes[j], fraction=0.046, pad=0.02)
 for k in range(n, len(axes)):
     axes[k].axis("off")
-fig.suptitle("10k PBMC (v3) — CellConsensus level-1 score per cell type",
-             fontsize=14, y=1.0)
+fig.suptitle(
+    "10k PBMC (v3) — CellConsensus level-1 score per cell type", fontsize=14, y=1.0
+)
 fig.tight_layout()
 out2 = os.path.join(ASSETS, "pbmc_score_lvl1.png")
-fig.savefig(out2, dpi=130, bbox_inches="tight"); plt.close(fig)
+fig.savefig(out2, dpi=130, bbox_inches="tight")
+plt.close(fig)
 print(f"  wrote {out2}")

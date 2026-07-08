@@ -1,4 +1,5 @@
 """Gene alias resolution to current HUGO symbols."""
+
 import json
 from pathlib import Path
 

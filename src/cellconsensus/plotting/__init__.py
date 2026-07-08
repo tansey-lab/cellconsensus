@@ -1,4 +1,5 @@
 """Plotting utilities for CellConsensus annotations."""
+
 from .visualize import (
     plot_celltype_barplot,
     plot_score_histogram,

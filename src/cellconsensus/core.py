@@ -1,4 +1,5 @@
 """CellConsensus: hierarchical cell type annotation."""
+
 import pickle
 import warnings
 
@@ -6,29 +7,27 @@ import numpy as np
 import pandas as pd
 from scipy import sparse
 
-from .consensus import (
-    get_meta_keys,
-    build_reference_matrix,
-    load_meta_groups,
-    load_consensus,
-    load_cell_type,
-)
-from .clustering.ccc import (compute_scores, double_quantile_normalize,
-                             build_score_graph)
 from .assignment import (
-    smooth,
-    cluster_average,
-    build_sub_nn,
     assign_argmax,
+    build_sub_nn,
+    cluster_average,
     run_sublevel,
+    smooth,
 )
 from .cancer import (
     _score_consensus,
+    cancer_key_to_name,
+    cancer_key_to_ncit,
+    is_cancer_key,
     load_cancer_cache,
     validate_cancer_types,
-    cancer_key_to_ncit,
-    cancer_key_to_name,
-    is_cancer_key,
+)
+from .clustering.ccc import build_score_graph, compute_scores, double_quantile_normalize
+from .consensus import (
+    build_reference_matrix,
+    get_meta_keys,
+    load_consensus,
+    load_meta_groups,
 )
 
 
@@ -96,13 +95,21 @@ class CellConsensus:
     >>> cc2 = CellConsensus.load("model.pkl")
     """
 
-    def __init__(self, clustering="ccc", n_neighbors=20,
-                 n_neighbors_lvl2=10, n_neighbors_lvl3=5,
-                 n_smooth=1, ref_top_k=200, graph_level=3,
-                 cluster_key=None):
+    def __init__(
+        self,
+        clustering="ccc",
+        n_neighbors=20,
+        n_neighbors_lvl2=10,
+        n_neighbors_lvl3=5,
+        n_smooth=1,
+        ref_top_k=200,
+        graph_level=3,
+        cluster_key=None,
+    ):
         if clustering not in ("ccc", "precomputed"):
-            raise ValueError(f"Unknown clustering: {clustering}. "
-                             f"Use 'ccc' or 'precomputed'.")
+            raise ValueError(
+                f"Unknown clustering: {clustering}. Use 'ccc' or 'precomputed'."
+            )
         self.clustering = clustering
         self.n_neighbors = n_neighbors
         self.n_neighbors_lvl2 = n_neighbors_lvl2
@@ -115,11 +122,11 @@ class CellConsensus:
         # Populated by fit()
         self.obs_names_ = None
         self.var_names_ = None
-        self.nn_indices_ = None      # ccc only
-        self.clusters_ = None        # precomputed only
+        self.nn_indices_ = None  # ccc only
+        self.clusters_ = None  # precomputed only
         self.Q_ = None
-        self.S_ = None               # level-1 (reduced) score matrix
-        self.meta_keys_ = None       # level-1 keys (+ cancer keys)
+        self.S_ = None  # level-1 (reduced) score matrix
+        self.meta_keys_ = None  # level-1 keys (+ cancer keys)
 
         # Cancer-in-fit metadata (set by fit when include_cancer=True)
         self.include_cancer_ = False
@@ -163,8 +170,7 @@ class CellConsensus:
             validate_cancer_types(cancer_types)
             cache = load_cancer_cache()
             if cancer_types is None:
-                self.cancer_keys_ = (["cancer"]
-                                     if "cancer" in cache["consensus"] else [])
+                self.cancer_keys_ = ["cancer"] if "cancer" in cache["consensus"] else []
             else:
                 self.cancer_keys_ = list(cancer_types)
             if not self.cancer_keys_:
@@ -194,12 +200,15 @@ class CellConsensus:
         built in that score space — no normalize_total / log1p / HVG / PCA.
         """
         keys = list(load_consensus(self.graph_level)["consensus"].keys())
-        R = build_reference_matrix(np.asarray(adata.var_names), keys,
-                                   self.ref_top_k, level=self.graph_level)
+        R = build_reference_matrix(
+            np.asarray(adata.var_names), keys, self.ref_top_k, level=self.graph_level
+        )
         if verbose:
-            print(f"Score-space {self.n_neighbors}-NN graph "
-                  f"({adata.n_obs} cells, {len(keys)} level-"
-                  f"{self.graph_level} programs, double quantile-norm)...")
+            print(
+                f"Score-space {self.n_neighbors}-NN graph "
+                f"({adata.n_obs} cells, {len(keys)} level-"
+                f"{self.graph_level} programs, double quantile-norm)..."
+            )
         nn_indices, Q, A = build_score_graph(adata, R, self.n_neighbors)
         self.nn_indices_ = nn_indices
         self.clusters_ = None
@@ -225,8 +234,10 @@ class CellConsensus:
 
         if verbose:
             n_clusters = len(np.unique(self.clusters_))
-            print(f"Using {n_clusters} precomputed clusters "
-                  f"({self.cluster_key}); double quantile-norm...")
+            print(
+                f"Using {n_clusters} precomputed clusters "
+                f"({self.cluster_key}); double quantile-norm..."
+            )
         self.Q_ = double_quantile_normalize(adata.X)
 
     # ----------------------------------------------------------- reducers
@@ -245,12 +256,14 @@ class CellConsensus:
             def fn(S, cell_idx):
                 sub_nn = build_sub_nn(nn_indices, cell_idx, sub_n_neighbors)
                 return smooth(S, sub_nn, n_smooth)
+
             return fn
 
         clusters = self.clusters_
 
         def fn(S, cell_idx):
             return cluster_average(S, clusters[cell_idx])
+
         return fn
 
     def _assign_all_levels(self, verbose):
@@ -263,13 +276,15 @@ class CellConsensus:
             extra = f" + {len(cancer_keys)} cancer" if cancer_keys else ""
             print(f"Scoring level 1 ({len(meta_keys)} types{extra})...")
 
-        R = build_reference_matrix(
-            self.var_names_, meta_keys, self.ref_top_k, level=1)
+        R = build_reference_matrix(self.var_names_, meta_keys, self.ref_top_k, level=1)
         if cancer_keys:
             cache = load_cancer_cache()
             R_cancer = build_reference_matrix(
-                self.var_names_, cancer_keys, self.ref_top_k,
-                consensus=cache["consensus"])
+                self.var_names_,
+                cancer_keys,
+                self.ref_top_k,
+                consensus=cache["consensus"],
+            )
             R = sparse.hstack([R, R_cancer]).tocsc()
 
         S = compute_scores(self.Q_, R)
@@ -284,8 +299,11 @@ class CellConsensus:
             for mk in all_keys:
                 count = int((labels1 == mk).sum())
                 if count > 0:
-                    display = (groups.get(mk, mk) if mk not in cancer_keys
-                               else cancer_key_to_name(mk))
+                    display = (
+                        groups.get(mk, mk)
+                        if mk not in cancer_keys
+                        else cancer_key_to_name(mk)
+                    )
                     print(f"  {display:<35} {count:>6} cells")
 
         # Refinement skips "unassigned" and all cancer keys (no taxonomy below).
@@ -294,17 +312,29 @@ class CellConsensus:
         if verbose:
             print("\n--- Level 2 ---")
         labels2, scores2 = run_sublevel(
-            self.Q_, labels1, 2, self.var_names_,
+            self.Q_,
+            labels1,
+            2,
+            self.var_names_,
             self._sublevel_reduce_fn(self.n_neighbors_lvl2),
-            ref_top_k=self.ref_top_k, skip_labels=skip_labels, verbose=verbose)
+            ref_top_k=self.ref_top_k,
+            skip_labels=skip_labels,
+            verbose=verbose,
+        )
         self._predictions[2] = (labels2, scores2)
 
         if verbose:
             print("\n--- Level 3 ---")
         labels3, scores3 = run_sublevel(
-            self.Q_, labels2, 3, self.var_names_,
+            self.Q_,
+            labels2,
+            3,
+            self.var_names_,
             self._sublevel_reduce_fn(self.n_neighbors_lvl3),
-            ref_top_k=self.ref_top_k, skip_labels=skip_labels, verbose=verbose)
+            ref_top_k=self.ref_top_k,
+            skip_labels=skip_labels,
+            verbose=verbose,
+        )
         self._predictions[3] = (labels3, scores3)
 
     # -------------------------------------------------------------- predict
@@ -348,15 +378,19 @@ class CellConsensus:
         if output == "key":
             values = raw_labels
         elif output == "cl_id":
-            values = np.array([
-                cancer_key_to_ncit(mk) if mk in cancer_keys else meta_to_cl(mk)
-                for mk in raw_labels
-            ])
+            values = np.array(
+                [
+                    cancer_key_to_ncit(mk) if mk in cancer_keys else meta_to_cl(mk)
+                    for mk in raw_labels
+                ]
+            )
         else:  # name
-            values = np.array([
-                cancer_key_to_name(mk) if mk in cancer_keys else meta_to_name(mk)
-                for mk in raw_labels
-            ])
+            values = np.array(
+                [
+                    cancer_key_to_name(mk) if mk in cancer_keys else meta_to_name(mk)
+                    for mk in raw_labels
+                ]
+            )
 
         return pd.Series(values, index=self.obs_names_, name="cellconsensus")
 
@@ -370,8 +404,7 @@ class CellConsensus:
             return raw_labels
 
         meta_keys = self.meta_keys_
-        non_cancer_idx = [j for j, mk in enumerate(meta_keys)
-                          if mk not in cancer_keys]
+        non_cancer_idx = [j for j, mk in enumerate(meta_keys) if mk not in cancer_keys]
         if not non_cancer_idx:
             return raw_labels
         sub_keys = [meta_keys[j] for j in non_cancer_idx]
@@ -470,16 +503,23 @@ class CellConsensus:
 
         reduce_fn = self._level1_reduce if smooth else (lambda S: S)
         if verbose:
-            print(f"Scoring {len(keys)} type(s) at level={level} "
-                  f"({self.clustering}, reduce={'yes' if smooth else 'no'})...")
+            print(
+                f"Scoring {len(keys)} type(s) at level={level} "
+                f"({self.clustering}, reduce={'yes' if smooth else 'no'})..."
+            )
         S = _score_consensus(
-            self.Q_, self.var_names_, merged, keys,
-            reduce_fn, ref_top_k=self.ref_top_k,
+            self.Q_,
+            self.var_names_,
+            merged,
+            keys,
+            reduce_fn,
+            ref_top_k=self.ref_top_k,
         )
         return pd.DataFrame(S, columns=keys, index=self.obs_names_)
 
-    def predict_gene_set(self, genes, weights=None, name="gene_set",
-                         smooth=True, verbose=False):
+    def predict_gene_set(
+        self, genes, weights=None, name="gene_set", smooth=True, verbose=False
+    ):
         """Score cells against a user-supplied gene signature.
 
         Parameters
@@ -525,11 +565,17 @@ class CellConsensus:
         reduce_fn = self._level1_reduce if smooth else (lambda S: S)
 
         if verbose:
-            print(f"Scoring gene set '{name}' ({len(gene_list)} genes, "
-                  f"reduce={'yes' if smooth else 'no'})...")
+            print(
+                f"Scoring gene set '{name}' ({len(gene_list)} genes, "
+                f"reduce={'yes' if smooth else 'no'})..."
+            )
         S = _score_consensus(
-            self.Q_, self.var_names_, consensus, [name],
-            reduce_fn, ref_top_k=len(gene_list),
+            self.Q_,
+            self.var_names_,
+            consensus,
+            [name],
+            reduce_fn,
+            ref_top_k=len(gene_list),
         )
         if S.shape[1] == 0 or np.allclose(S, 0):
             warnings.warn(
@@ -551,8 +597,7 @@ class CellConsensus:
         """
         self._check_fitted()
         if level == 1:
-            return pd.DataFrame(
-                self.S_, columns=self.meta_keys_, index=self.obs_names_)
+            return pd.DataFrame(self.S_, columns=self.meta_keys_, index=self.obs_names_)
         raise NotImplementedError("Score matrix for level > 1 not yet supported.")
 
     # ---------------------------------------------------------- persistence
@@ -565,6 +610,7 @@ class CellConsensus:
         """
         self._check_fitted()
         from . import __version__ as _cc_version
+
         state = {
             "version": _cc_version,
             "hyperparameters": {
@@ -600,6 +646,7 @@ class CellConsensus:
             state = pickle.load(f)
 
         from . import __version__ as _cc_version
+
         saved_version = state.get("version", "unknown")
         if saved_version != _cc_version:
             warnings.warn(
@@ -609,16 +656,16 @@ class CellConsensus:
 
         obj = cls(**state["hyperparameters"])
         f = state["fitted"]
-        obj.obs_names_      = f["obs_names"]
-        obj.var_names_      = f["var_names"]
-        obj.nn_indices_     = f["nn_indices"]
-        obj.clusters_       = f.get("clusters")
-        obj.Q_              = f["Q"]
-        obj.S_              = f["S"]
-        obj.meta_keys_      = f["meta_keys"]
-        obj._predictions    = f["predictions"]
+        obj.obs_names_ = f["obs_names"]
+        obj.var_names_ = f["var_names"]
+        obj.nn_indices_ = f["nn_indices"]
+        obj.clusters_ = f.get("clusters")
+        obj.Q_ = f["Q"]
+        obj.S_ = f["S"]
+        obj.meta_keys_ = f["meta_keys"]
+        obj._predictions = f["predictions"]
         obj.include_cancer_ = f.get("include_cancer", False)
-        obj.cancer_keys_    = f.get("cancer_keys")
+        obj.cancer_keys_ = f.get("cancer_keys")
         return obj
 
     def _check_fitted(self):
